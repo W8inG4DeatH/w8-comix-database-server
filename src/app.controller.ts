@@ -1,12 +1,43 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('')
+  getComixList() {
+    return {
+      message: 'Comix list',
+    };
+  }
+
+  @Get('/comix')
+  getComixEdit() {
+    return {
+      message: 'Comix edition',
+    };
+  }
+
+  @Post('')
+  createComix(@Body() comix: { title: string }) {
+    return comix;
+  }
+
+  @Put('')
+  updateComix(@Body() comix: { title: string }) {
+    return comix;
+  }
+
+  @Delete(':comixId')
+  deleteComix(@Param() comixId: string) {
+    return comixId;
   }
 }

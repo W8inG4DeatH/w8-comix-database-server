@@ -1,0 +1,27 @@
+### Express.js endpoint /
+GET http://localhost:3031/
+
+### NestJs endpoint /
+GET http://localhost:3000/
+
+
+### Create comix /
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "title": "Gala Asteriksa"
+}
+
+
+### Update comix /
+PUT http://localhost:3000/
+Content-Type: application/json
+
+{
+    "title": "Woje Mirmiła"
+}
+
+
+### Delete comix /
+DELETE http://localhost:3000/1
