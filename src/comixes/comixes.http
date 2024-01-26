@@ -1,0 +1,45 @@
+### [R]ead comixes
+GET http://localhost:3000/comixes
+
+
+### [C]reate comixes
+POST http://localhost:3000/comixes
+Content-Type: application/json
+
+{
+    "SeriesTitle": "Kajko i Kokosz",
+    "SeriesSubtitle": "",
+    "ComixTitle": "Woje Mirmiła",
+    "DisplayName": "Kajko i Kokosz - Woje Mirmiła",
+    "Author": "Janusz Christa",
+    "Publisher": "Egmont",
+    "PublishmentYear": 2023,
+    "NumberOfPages": 41,
+    "CoverHard": false,
+    "Rating": 7,
+    "Collected": false
+}
+
+
+### Update comix /
+PUT http://localhost:3000/
+Content-Type: application/json
+
+{
+    "Id": 2,
+    "SeriesTitle": "Kajko i Kokosz",
+    "SeriesSubtitle": "",
+    "ComixTitle": "Woje Mirmiła",
+    "DisplayName": "Kajko i Kokosz - Woje Mirmiła",
+    "Author": "Janusz Christa",
+    "Publisher": "Egmont",
+    "PublishmentYear": 2023,
+    "NumberOfPages": 41,
+    "CoverHard": false,
+    "Rating": 7,
+    "Collected": true
+}
+
+
+### Delete comix /
+DELETE http://localhost:3000/comixes/1
