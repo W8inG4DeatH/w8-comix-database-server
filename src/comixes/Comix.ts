@@ -6,7 +6,7 @@ export interface Comix {
   DisplayName?: string;
   Author?: string;
   Publisher?: string;
-  PublishmentYear?: string;
+  PublishmentYear?: number;
   NumberOfPages?: number;
   CoverHard?: boolean;
   Rating?: number;

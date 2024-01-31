@@ -3,56 +3,43 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
   Put,
 } from '@nestjs/common';
-import { Comix } from './Comix';
+import { ComixesService } from 'src/comixes/comixes.service';
+import { CreateComixDTO } from './dto/create-comix.dto';
+import { UpdateComixDTO } from './dto/update-comix.dto';
 
 @Controller('comixes')
 export class ComixesController {
-  trackId = 1;
-  comixes: Comix[] = [
-    {
-      Id: this.trackId++,
-      SeriesTitle: 'The Walking Dead Series',
-      SeriesSubtitle: 'Days Gone Bye',
-      ComixTitle: 'The Walking Dead',
-      DisplayName: 'Days Gone Bye',
-    },
-  ];
-
-  @Get()
-  getAll() {
-    return this.comixes;
-  }
-
-  @Get()
-  getComix() {
-    return {
-      message: 'Comix',
-    };
-  }
+  constructor(private comixesService: ComixesService) {}
 
   @Post()
-  createComix(@Body() comix: Comix) {
-    comix.Id = this.trackId++;
-    this.comixes.push(comix);
-    return comix;
+  createOne(@Body() comix: CreateComixDTO) {
+    return this.comixesService.createOne(comix);
+  }
+
+  @Get()
+  readAll() {
+    return this.comixesService.readAll();
   }
 
   @Put()
-  updateComix(@Body() comix: Comix) {
-    const comixToUpdate = this.comixes.find((c) => c.Id === Number(comix.Id));
-    if (comixToUpdate) {
-      Object.assign(comixToUpdate, comix);
-    }
-    return comixToUpdate;
+  updateOne(@Body() comix: UpdateComixDTO) {
+    return this.comixesService.updateOne(comix);
   }
 
   @Delete(':id')
-  deleteComix(@Param('id') comixId: string) {
-    this.comixes = this.comixes.filter((c) => c.Id !== Number(comixId));
-    return { comixId };
+  deleteComix(@Param('id', ParseIntPipe) comixId: number) {
+    return this.comixesService.deleteOne(comixId);
+  }
+
+  @Get('/exception-404') // can make others by HttpStatus enum
+  exampleException() {
+    throw new HttpException('Not found', HttpStatus.NOT_FOUND);
   }
 }
