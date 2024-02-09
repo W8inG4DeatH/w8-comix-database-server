@@ -7,17 +7,17 @@ POST http://localhost:3000/comixes
 Content-Type: application/json
 
 {
-    "SeriesTitle": "Kajko i Kokosz",
-    "SeriesSubtitle": "",
-    "ComixTitle": "Woje Mirmiła",
-    "DisplayName": "Kajko i Kokosz - Woje Mirmiła",
-    "Author": "Janusz Christa",
-    "Publisher": "Egmont",
-    "PublishmentYear": 2023,
-    "NumberOfPages": 41,
-    "CoverHard": false,
-    "Rating": 7,
-    "Collected": false
+    "seriesTitle": "Kajko i Kokosz",
+    "seriesSubtitle": "",
+    "comixTitle": "Woje Mirmiła",
+    "displayName": "Kajko i Kokosz - Woje Mirmiła",
+    "author": "Janusz Christa",
+    "publisher": "Egmont",
+    "publishmentYear": 2023,
+    "numberOfPages": 41,
+    "coverHard": false,
+    "rating": 7,
+    "collected": false
 }
 
 
@@ -26,18 +26,18 @@ PUT http://localhost:3000/comixes/2
 Content-Type: application/json
 
 {
-    "Id": 2,
-    "SeriesTitle": "Kajko i Kokosz",
-    "SeriesSubtitle": "",
-    "ComixTitle": "Woje Mirmiła",
-    "DisplayName": "Kajko i Kokosz - Woje Mirmiła",
-    "Author": "Janusz Christa",
-    "Publisher": "Egmont",
-    "PublishmentYear": 2023,
-    "NumberOfPages": 41,
-    "CoverHard": false,
-    "Rating": 7,
-    "Collected": true
+    "id": 2,
+    "seriesTitle": "Kajko i Kokosz",
+    "seriesSubtitle": "",
+    "comixTitle": "Woje Mirmiła",
+    "displayName": "Kajko i Kokosz - Woje Mirmiła",
+    "author": "Janusz Christa",
+    "publisher": "Egmont",
+    "publishmentYear": 2023,
+    "numberOfPages": 41,
+    "coverHard": false,
+    "rating": 7,
+    "collected": true
 }
 
 

@@ -10,7 +10,8 @@ export class ComixesService {
 
   createOne(comix: CreateComixDTO): Comix {
     const newComix: Comix = {
-      Id: this.trackId++,
+      id: this.trackId++,
+      comixTitle: comix.ComixTitle,
       ...comix,
     };
     this.comixes.push(newComix);
@@ -23,7 +24,7 @@ export class ComixesService {
 
   getOneById(comixId: number): Comix {
     const comix: Comix = this.comixes.find(
-      (c: Comix) => c.Id === Number(comix.Id),
+      (c: Comix) => c.id === Number(comix.id),
     );
     if (!comix) {
       throw new NotFoundException(`Comix id ${comixId} not found`);
@@ -39,7 +40,7 @@ export class ComixesService {
 
   deleteOne(comixId: number): { comixId: number } {
     this.getOneById(comixId);
-    this.comixes = this.comixes.filter((c: Comix) => c.Id !== Number(comixId));
+    this.comixes = this.comixes.filter((c: Comix) => c.id !== Number(comixId));
     return { comixId };
   }
 }

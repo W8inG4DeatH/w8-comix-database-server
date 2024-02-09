@@ -1,14 +1,41 @@
-export interface Comix {
-  Id: number;
-  SeriesTitle?: string;
-  SeriesSubtitle?: string;
-  ComixTitle: string;
-  DisplayName?: string;
-  Author?: string;
-  Publisher?: string;
-  PublishmentYear?: number;
-  NumberOfPages?: number;
-  CoverHard?: boolean;
-  Rating?: number;
-  Collected?: boolean;
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+// export class Comix extends BaseEntity {
+export class Comix {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ type: 'varchar' })
+  seriesTitle?: string;
+
+  @Column({ type: 'varchar' })
+  seriesSubtitle?: string;
+
+  @Column({ type: 'varchar' })
+  comixTitle: string;
+
+  @Column({ type: 'varchar' })
+  displayName?: string;
+
+  @Column({ type: 'varchar' })
+  author?: string;
+
+  @Column({ type: 'varchar' })
+  publisher?: string;
+
+  @Column({ type: 'int' })
+  publishmentYear?: number;
+
+  @Column({ type: 'int' })
+  numberOfPages?: number;
+
+  @Column({ type: 'boolean' })
+  coverHard?: boolean;
+
+  @Column({ type: 'int' })
+  rating?: number;
+
+  @Column({ type: 'boolean' })
+  collected?: boolean;
 }
