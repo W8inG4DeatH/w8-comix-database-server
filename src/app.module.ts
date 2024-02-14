@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ComixModule } from './comixes/comixes.module';
+import { ComixModule } from './comix/comix.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ComixModule } from './comixes/comixes.module';
     //   synchronize: true, // setting to true automatically synchronizes the database schema, use only in a development environment
     // }),
     ComixModule,
+    UserModule,
   ],
   controllers: [AppController],
 })

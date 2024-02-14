@@ -1,9 +1,9 @@
-### [R]ead comixes
-GET http://localhost:3000/comixes
+### [R]ead Comix
+GET http://localhost:3000/Comix
 
 
-### [C]reate comixes
-POST http://localhost:3000/comixes
+### [C]reate Comix
+POST http://localhost:3000/Comix
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 
 ### [U]pdate comix
-PUT http://localhost:3000/comixes
+PUT http://localhost:3000/Comix
 Content-Type: application/json
 
 {
@@ -42,8 +42,8 @@ Content-Type: application/json
 
 
 ### [D]elete comix
-DELETE http://localhost:3000/comixes/1
+DELETE http://localhost:3000/Comix/1
 
 
 ### Sample exception
-GET http://localhost:3000/comixes/exception
+GET http://localhost:3000/Comix/exception

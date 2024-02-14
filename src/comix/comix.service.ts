@@ -1,18 +1,22 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Comix } from './Comix';
+import { Comix } from './comix.entity';
 import { CreateComixDTO } from './dto/create-comix.dto';
 import { UpdateComixDTO } from './dto/update-comix.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
-export class ComixesService {
+export class ComixService {
+  constructor(
+    @InjectRepository(Comix) private comixRepository: Repository<Comix>, // comixRepository indicates database operations
+  ) {}
+
   createOne(comix: CreateComixDTO): Promise<Comix> {
-    const newComix: Comix = new Comix();
-    Object.assign(newComix, comix);
-    return newComix.save();
+    return this.comixRepository.save(comix);
   }
 
   readAll(): Promise<Comix[]> {
-    return Comix.find();
+    return this.comixRepository.find();
   }
 
   async getOneById(comixId: number): Promise<Comix> {
@@ -23,14 +27,13 @@ export class ComixesService {
     return comix;
   }
 
-  async updateOne(comix: UpdateComixDTO): Promise<Comix> {
-    const comixToUpdate = await this.getOneById(comix.id);
-    Object.assign(comixToUpdate, comix);
-    return comixToUpdate.save();
+  async updateOne(comix: UpdateComixDTO) {
+    await this.getOneById(comix.id);
+    return this.comixRepository.update(comix.id, comix);
   }
 
   async deleteOne(comixId: number): Promise<Comix> {
     const comixToDelete = await this.getOneById(comixId);
-    return comixToDelete.remove();
+    return this.comixRepository.remove(comixToDelete);
   }
 }
