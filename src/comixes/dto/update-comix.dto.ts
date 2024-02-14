@@ -2,46 +2,46 @@ import { IsNumber, IsString, IsOptional } from 'class-validator';
 
 export class UpdateComixDTO {
   @IsNumber({}, { message: 'Id must be a number' }) // example of custom message
-  Id: number;
+  id: number;
 
   @IsOptional()
   @IsString()
-  SeriesTitle?: string;
+  seriesTitle?: string;
 
   @IsOptional()
   @IsString()
-  SeriesSubtitle?: string;
+  seriesSubtitle?: string;
 
   @IsString()
-  ComixTitle: string;
-
-  @IsOptional()
-  @IsString()
-  DisplayName?: string;
+  comixTitle: string;
 
   @IsOptional()
   @IsString()
-  Author?: string;
+  displayName?: string;
 
   @IsOptional()
   @IsString()
-  Publisher?: string;
+  author?: string;
+
+  @IsOptional()
+  @IsString()
+  publisher?: string;
 
   @IsOptional()
   @IsNumber()
-  PublishmentYear?: number;
+  publishmentYear?: number;
 
   @IsOptional()
   @IsNumber()
-  NumberOfPages?: number;
+  numberOfPages?: number;
 
   @IsOptional()
-  CoverHard?: boolean;
+  coverHard?: boolean;
 
   @IsOptional()
   @IsNumber()
-  Rating?: number;
+  rating?: number;
 
   @IsOptional()
-  Collected?: boolean;
+  collected?: boolean;
 }

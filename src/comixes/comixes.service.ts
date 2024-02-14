@@ -5,42 +5,32 @@ import { UpdateComixDTO } from './dto/update-comix.dto';
 
 @Injectable()
 export class ComixesService {
-  private trackId = 1;
-  private comixes: Comix[] = [];
-
-  createOne(comix: CreateComixDTO): Comix {
-    const newComix: Comix = {
-      id: this.trackId++,
-      comixTitle: comix.ComixTitle,
-      ...comix,
-    };
-    this.comixes.push(newComix);
-    return newComix;
+  createOne(comix: CreateComixDTO): Promise<Comix> {
+    const newComix: Comix = new Comix();
+    Object.assign(newComix, comix);
+    return newComix.save();
   }
 
-  readAll(): readonly Comix[] {
-    return this.comixes;
+  readAll(): Promise<Comix[]> {
+    return Comix.find();
   }
 
-  getOneById(comixId: number): Comix {
-    const comix: Comix = this.comixes.find(
-      (c: Comix) => c.id === Number(comix.id),
-    );
+  async getOneById(comixId: number): Promise<Comix> {
+    const comix: Comix = await Comix.findOne({ where: { id: comixId } });
     if (!comix) {
       throw new NotFoundException(`Comix id ${comixId} not found`);
     }
     return comix;
   }
 
-  updateOne(comix: UpdateComixDTO): Comix {
-    const comixToUpdate = this.getOneById(comix.Id);
+  async updateOne(comix: UpdateComixDTO): Promise<Comix> {
+    const comixToUpdate = await this.getOneById(comix.id);
     Object.assign(comixToUpdate, comix);
-    return comixToUpdate;
+    return comixToUpdate.save();
   }
 
-  deleteOne(comixId: number): { comixId: number } {
-    this.getOneById(comixId);
-    this.comixes = this.comixes.filter((c: Comix) => c.id !== Number(comixId));
-    return { comixId };
+  async deleteOne(comixId: number): Promise<Comix> {
+    const comixToDelete = await this.getOneById(comixId);
+    return comixToDelete.remove();
   }
 }

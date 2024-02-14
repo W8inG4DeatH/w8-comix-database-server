@@ -22,7 +22,7 @@ Content-Type: application/json
 
 
 ### [U]pdate comix
-PUT http://localhost:3000/comixes/2
+PUT http://localhost:3000/comixes
 Content-Type: application/json
 
 {
