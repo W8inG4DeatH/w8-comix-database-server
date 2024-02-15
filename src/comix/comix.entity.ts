@@ -48,8 +48,6 @@ export class Comix extends BaseEntity {
   @Column({ type: 'boolean', nullable: true })
   collected?: boolean;
 
-  @ManyToOne(() => User, (user: User) => user.comixes, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(() => User, (user: User) => user.comixes)
   user: User;
 }

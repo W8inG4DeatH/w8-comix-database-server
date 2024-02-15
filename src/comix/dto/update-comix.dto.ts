@@ -48,4 +48,8 @@ export class UpdateComixDTO {
 
   @IsOptional()
   collected?: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  userId: number;
 }

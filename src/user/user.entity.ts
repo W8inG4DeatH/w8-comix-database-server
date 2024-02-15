@@ -18,6 +18,9 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar' })
   password: string;
 
-  @OneToMany(() => Comix, (comix: Comix) => comix.user)
+  @OneToMany(() => Comix, (comix) => comix.user, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   comixes?: Comix[];
 }

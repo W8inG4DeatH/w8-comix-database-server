@@ -45,4 +45,7 @@ export class CreateComixDTO {
 
   @IsOptional()
   collected?: boolean;
+
+  @IsNumber()
+  userId: number;
 }

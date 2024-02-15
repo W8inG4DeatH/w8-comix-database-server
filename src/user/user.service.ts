@@ -15,8 +15,10 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  readAll(): Promise<User[]> {
-    return this.userRepository.find();
+  async readAll(): Promise<User[]> {
+    // const users = await this.userRepository.find();
+    const users = await this.userRepository.find({ relations: ['comixes'] });
+    return users;
   }
 
   async getOneById(userId: number): Promise<User> {

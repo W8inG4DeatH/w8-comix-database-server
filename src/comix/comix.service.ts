@@ -4,19 +4,39 @@ import { CreateComixDTO } from './dto/create-comix.dto';
 import { UpdateComixDTO } from './dto/update-comix.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class ComixService {
   constructor(
-    @InjectRepository(Comix) private comixRepository: Repository<Comix>, // comixRepository indicates database operations
+    @InjectRepository(Comix)
+    private comixRepository: Repository<Comix>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
-  createOne(comix: CreateComixDTO): Promise<Comix> {
-    return this.comixRepository.save(comix);
+  async createOne(createComixDto: CreateComixDTO): Promise<Comix> {
+    const { userId, ...comixDetails } = createComixDto;
+
+    const user = await this.userRepository.findOneBy({ id: userId });
+    if (!user) {
+      throw new NotFoundException(`User with ID "${userId}" not found`);
+    }
+
+    const comix = this.comixRepository.create({
+      ...comixDetails,
+      user, // Assigns the user object to comix, which automatically sets the userId
+    });
+
+    await this.comixRepository.save(comix);
+
+    return comix;
   }
 
-  readAll(): Promise<Comix[]> {
-    return this.comixRepository.find();
+  async readAll(): Promise<Comix[]> {
+    // const comixes = await this.comixRepository.find();
+    const comixes = await this.comixRepository.find({ relations: ['user'] });
+    return comixes;
   }
 
   async getOneById(comixId: number): Promise<Comix> {

@@ -18,7 +18,8 @@ Content-Type: application/json
     "coverLinkUrl": null,
     "coverHard": false,
     "rating": 7,
-    "collected": false
+    "collected": false,
+    "userId": 2
 }
 
 
@@ -27,7 +28,7 @@ PUT http://localhost:3000/comix
 Content-Type: application/json
 
 {
-    "id": 2,
+    "id": 5,
     "seriesTitle": "Kajko i Kokosz",
     "seriesSubtitle": "",
     "comixTitle": "Woje Mirmiła",
@@ -39,12 +40,13 @@ Content-Type: application/json
     "coverLinkUrl": null,
     "coverHard": false,
     "rating": 7,
-    "collected": true
+    "collected": true,
+    "userId": 3
 }
 
 
 ### [D]elete comix
-DELETE http://localhost:3000/comix/1
+DELETE http://localhost:3000/comix/7
 
 
 ### Sample exception
