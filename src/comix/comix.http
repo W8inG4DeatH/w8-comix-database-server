@@ -1,9 +1,9 @@
-### [R]ead Comix
-GET http://localhost:3000/Comix
+### [R]ead comix
+GET http://localhost:3000/comix
 
 
-### [C]reate Comix
-POST http://localhost:3000/Comix
+### [C]reate comix
+POST http://localhost:3000/comix
 Content-Type: application/json
 
 {
@@ -15,6 +15,7 @@ Content-Type: application/json
     "publisher": "Egmont",
     "publishmentYear": 2023,
     "numberOfPages": 41,
+    "coverLinkUrl": null,
     "coverHard": false,
     "rating": 7,
     "collected": false
@@ -22,7 +23,7 @@ Content-Type: application/json
 
 
 ### [U]pdate comix
-PUT http://localhost:3000/Comix
+PUT http://localhost:3000/comix
 Content-Type: application/json
 
 {
@@ -35,6 +36,7 @@ Content-Type: application/json
     "publisher": "Egmont",
     "publishmentYear": 2023,
     "numberOfPages": 41,
+    "coverLinkUrl": null,
     "coverHard": false,
     "rating": 7,
     "collected": true
@@ -42,8 +44,8 @@ Content-Type: application/json
 
 
 ### [D]elete comix
-DELETE http://localhost:3000/Comix/1
+DELETE http://localhost:3000/comix/1
 
 
 ### Sample exception
-GET http://localhost:3000/Comix/exception
+GET http://localhost:3000/comix/exception

@@ -4,6 +4,9 @@ export class UpdateComixDTO {
   @IsNumber({}, { message: 'Id must be a number' }) // example of custom message
   id: number;
 
+  @IsString()
+  comixTitle: string;
+
   @IsOptional()
   @IsString()
   seriesTitle?: string;
@@ -11,9 +14,6 @@ export class UpdateComixDTO {
   @IsOptional()
   @IsString()
   seriesSubtitle?: string;
-
-  @IsString()
-  comixTitle: string;
 
   @IsOptional()
   @IsString()
@@ -34,6 +34,10 @@ export class UpdateComixDTO {
   @IsOptional()
   @IsNumber()
   numberOfPages?: number;
+
+  @IsOptional()
+  @IsString()
+  coverUrlLink?: string;
 
   @IsOptional()
   coverHard?: boolean;

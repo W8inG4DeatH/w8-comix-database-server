@@ -1,6 +1,9 @@
 import { IsNumber, IsString, IsOptional } from 'class-validator';
 
 export class CreateComixDTO {
+  @IsString()
+  comixTitle: string;
+
   @IsOptional()
   @IsString()
   seriesTitle?: string;
@@ -8,9 +11,6 @@ export class CreateComixDTO {
   @IsOptional()
   @IsString()
   seriesSubtitle?: string;
-
-  @IsString()
-  comixTitle: string;
 
   @IsOptional()
   @IsString()
@@ -31,6 +31,10 @@ export class CreateComixDTO {
   @IsOptional()
   @IsNumber()
   numberOfPages?: number;
+
+  @IsOptional()
+  @IsString()
+  coverUrlLink?: string;
 
   @IsOptional()
   coverHard?: boolean;

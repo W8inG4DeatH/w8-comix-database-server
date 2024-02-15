@@ -1,0 +1,31 @@
+### [R]ead user
+GET http://localhost:3000/user
+
+
+### [C]reate user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "login": "W8inG4DeatH",
+    "password": "2011weronika"
+}
+
+
+### [U]pdate user
+PUT http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "id": 2,
+    "login": "W8inG4DeaD",
+    "password": "2011weronika"
+}
+
+
+### [D]elete user
+DELETE http://localhost:3000/user/1
+
+
+### Sample exception
+GET http://localhost:3000/user/exception

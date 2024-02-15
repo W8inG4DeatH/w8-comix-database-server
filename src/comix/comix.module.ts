@@ -6,7 +6,7 @@ import { ComixController } from './comix.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Comix])],
-  providers: [ComixService],
   controllers: [ComixController],
+  providers: [ComixService],
 })
 export class ComixModule {}

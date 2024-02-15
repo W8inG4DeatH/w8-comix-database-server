@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ComixModule } from './comix/comix.module';
 import { UserModule } from './user/user.module';
+import { ComixModule } from './comix/comix.module';
 
 @Module({
   imports: [
@@ -25,8 +25,8 @@ import { UserModule } from './user/user.module';
     //   autoLoadEntities: true, // automatically load entities
     //   synchronize: true, // setting to true automatically synchronizes the database schema, use only in a development environment
     // }),
-    ComixModule,
     UserModule,
+    ComixModule,
   ],
   controllers: [AppController],
 })
