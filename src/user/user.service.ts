@@ -4,15 +4,18 @@ import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Comix } from 'src/comix/comix.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>, // userRepository indicates database operations
+    @InjectRepository(Comix) private comixRepository: Repository<Comix>,
   ) {}
 
-  createOne(user: CreateUserDTO): Promise<User> {
-    return this.userRepository.save(user);
+  async createOne(user: CreateUserDTO): Promise<User> {
+    const newUser = this.userRepository.create(user);
+    return await this.userRepository.save(newUser);
   }
 
   async readAll(): Promise<User[]> {
@@ -38,4 +41,17 @@ export class UserService {
     const userToDelete = await this.getOneById(userId);
     return this.userRepository.remove(userToDelete);
   }
+  // async deleteOne(userId: number): Promise<void> {
+  //   const user = await this.userRepository.findOne({
+  //     where: { id: userId },
+  //     relations: ['comixes'],
+  //   });
+  //   if (!user) {
+  //     throw new NotFoundException(`User id ${userId} not found`);
+  //   }
+  //   if (user.comixes.length > 0) {
+  //     await this.comixRepository.remove(user.comixes);
+  //   }
+  //   await this.userRepository.remove(user);
+  // }
 }

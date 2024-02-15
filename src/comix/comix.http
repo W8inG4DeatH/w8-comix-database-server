@@ -15,11 +15,11 @@ Content-Type: application/json
     "publisher": "Egmont",
     "publishmentYear": 2023,
     "numberOfPages": 41,
-    "coverLinkUrl": null,
+    "coverUrlLink": null,
     "coverHard": false,
     "rating": 7,
     "collected": false,
-    "userId": 2
+    "userId": 4
 }
 
 
@@ -28,7 +28,7 @@ PUT http://localhost:3000/comix
 Content-Type: application/json
 
 {
-    "id": 5,
+    "id": 8,
     "seriesTitle": "Kajko i Kokosz",
     "seriesSubtitle": "",
     "comixTitle": "Woje Mirmiła",
@@ -37,11 +37,11 @@ Content-Type: application/json
     "publisher": "Egmont",
     "publishmentYear": 2023,
     "numberOfPages": 41,
-    "coverLinkUrl": null,
+    "coverUrlLink": null,
     "coverHard": false,
     "rating": 7,
     "collected": true,
-    "userId": 3
+    "userId": 4
 }
 
 

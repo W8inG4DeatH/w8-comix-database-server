@@ -17,19 +17,15 @@ export class ComixService {
 
   async createOne(createComixDto: CreateComixDTO): Promise<Comix> {
     const { userId, ...comixDetails } = createComixDto;
-
     const user = await this.userRepository.findOneBy({ id: userId });
     if (!user) {
       throw new NotFoundException(`User with ID "${userId}" not found`);
     }
-
     const comix = this.comixRepository.create({
       ...comixDetails,
       user, // Assigns the user object to comix, which automatically sets the userId
     });
-
     await this.comixRepository.save(comix);
-
     return comix;
   }
 

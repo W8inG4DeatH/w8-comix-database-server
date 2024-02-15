@@ -7,24 +7,24 @@ import { ComixModule } from './comix/comix.module';
 @Module({
   imports: [
     // SqLite
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database/comix_db.sqlite3', // database path
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
-    // My SQL
     // TypeOrmModule.forRoot({
-    //   type: 'mysql', // database type
-    //   host: 'localhost', // database host
-    //   port: 3306, // MySQL port
-    //   username: 'root', // username
-    //   password: '2011weronika', // password
-    //   database: 'comix_db_mysql', // database name
-    //   // entities: [], // entities
-    //   autoLoadEntities: true, // automatically load entities
-    //   synchronize: true, // setting to true automatically synchronizes the database schema, use only in a development environment
+    //   type: 'sqlite',
+    //   database: 'database/comix_db.sqlite3', // database path
+    //   autoLoadEntities: true,
+    //   synchronize: true,
     // }),
+    // My SQL
+    TypeOrmModule.forRoot({
+      type: 'mysql', // database type
+      host: 'localhost', // database host
+      port: 3306, // MySQL port
+      username: 'W8inG4DeatH', // username
+      password: '2011weronika', // password
+      database: 'db_mysql_comix', // database name
+      // entities: [], // entities
+      autoLoadEntities: true, // automatically load entities
+      synchronize: true, // setting to true automatically synchronizes the database schema, use only in a development environment
+    }),
     UserModule,
     ComixModule,
   ],
