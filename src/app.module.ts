@@ -3,27 +3,17 @@ import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { ComixModule } from './comix/comix.module';
+import { ConfigModule } from '@nestjs/config';
+import { databaseConfig } from 'config/database.config';
+import { envValidationSchema } from 'config/envValidation.config';
 
 @Module({
   imports: [
-    // SqLite
-    // TypeOrmModule.forRoot({
-    //   type: 'sqlite',
-    //   database: 'database/comix_db.sqlite3', // database path
-    //   autoLoadEntities: true,
-    //   synchronize: true,
-    // }),
-    // My SQL
-    TypeOrmModule.forRoot({
-      type: 'mysql', // database type
-      host: 'localhost', // database host
-      port: 3306, // MySQL port
-      username: 'W8inG4DeatH', // username
-      password: '2011weronika', // password
-      database: 'db_mysql_comix', // database name
-      // entities: [], // entities
-      autoLoadEntities: true, // automatically load entities
-      synchronize: true, // setting to true automatically synchronizes the database schema, use only in a development environment
+    TypeOrmModule.forRootAsync(databaseConfig),
+    ConfigModule.forRoot({
+      isGlobal: true, // needed for access to configService from whole application
+      envFilePath: [`.env.${process.env.NODE_ENV}`], // file name depends on environment
+      validationSchema: envValidationSchema,
     }),
     UserModule,
     ComixModule,
