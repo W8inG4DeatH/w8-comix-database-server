@@ -14,10 +14,6 @@ export class CreateComixDTO {
 
   @IsOptional()
   @IsString()
-  displayName?: string;
-
-  @IsOptional()
-  @IsString()
   author?: string;
 
   @IsOptional()

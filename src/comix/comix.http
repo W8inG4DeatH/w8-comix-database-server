@@ -7,10 +7,10 @@ POST http://localhost:3000/comix
 Content-Type: application/json
 
 {
+    "id": 1,
     "seriesTitle": "Kajko i Kokosz",
     "seriesSubtitle": "",
     "comixTitle": "Woje Mirmiła",
-    "displayName": "Kajko i Kokosz - Woje Mirmiła",
     "author": "Janusz Christa",
     "publisher": "Egmont",
     "publishmentYear": 2023,
@@ -32,7 +32,6 @@ Content-Type: application/json
     "seriesTitle": "Kajko i Kokosz",
     "seriesSubtitle": "",
     "comixTitle": "Woje Mirmiła",
-    "displayName": "Kajko i Kokosz - Woje Mirmiła",
     "author": "Janusz Christa",
     "publisher": "Egmont",
     "publishmentYear": 2023,

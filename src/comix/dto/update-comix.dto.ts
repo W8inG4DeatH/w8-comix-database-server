@@ -17,10 +17,6 @@ export class UpdateComixDTO {
 
   @IsOptional()
   @IsString()
-  displayName?: string;
-
-  @IsOptional()
-  @IsString()
   author?: string;
 
   @IsOptional()

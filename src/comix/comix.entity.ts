@@ -22,9 +22,6 @@ export class Comix extends BaseEntity {
   seriesSubtitle?: string;
 
   @Column({ type: 'varchar', nullable: true })
-  displayName?: string;
-
-  @Column({ type: 'varchar', nullable: true })
   author?: string;
 
   @Column({ type: 'varchar', nullable: true })
